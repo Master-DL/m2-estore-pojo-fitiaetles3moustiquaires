@@ -13,15 +13,15 @@ import estorePojo.exceptions.InvalidCartException;
 import estorePojo.exceptions.UnknownAccountException;
 import estorePojo.exceptions.UnknownItemException;
 
-public class Store {
+public class Store implements IStore {
 
-	    private Provider provider;
-	    private Bank bank;
+	    private IProvider provider;
+	    private IBank bank;
 
 	    /**
 	     * Constructs a new StoreImpl
 	     */
-	    public Store(Provider prov, Bank bk) {
+	    public Store(IProvider prov, IBank bk) {
 	        provider = prov;
 	        bank = bk;
 	    }
@@ -31,6 +31,7 @@ public class Store {
 	     * @return      the price of a given item
 	     * @throws UnknownItemException
 	     */
+		@Override
 	    public double getPrice( Object item ) throws UnknownItemException {
 	        return provider.getPrice(item);
 	    }
@@ -43,6 +44,7 @@ public class Store {
 	     *      directly from the store
 	     *      i.e. without having to re-order it from the provider
 	     */
+		@Override
 	    public boolean isAvailable( Object item, int qty )
 	    throws UnknownItemException {
 	        
@@ -74,6 +76,7 @@ public class Store {
 	     * @throws MismatchClientCartException
 	     *      if the given client does not own the given cart
 	     */
+		@Override
 	    public Cart addItemToCart(
 	            Cart cart,
 	            Client client,
@@ -107,6 +110,7 @@ public class Store {
 	     * 
 	     * @throws UnknownItemException
 	     */
+		@Override
 	    public Order pay(Cart cart, String address, String bankAccountRef )
 	    throws
 	    InvalidCartException, UnknownItemException,
@@ -169,6 +173,7 @@ public class Store {
 	     * @throws InsufficientBalanceException
 	     * @throws UnknownAccountException
 	     */
+		@Override
 	    public Order oneShotOrder(
 	            Client client,
 	            Object item,

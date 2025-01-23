@@ -4,7 +4,7 @@ import data.Account;
 import estorePojo.exceptions.InsufficientBalanceException;
 import estorePojo.exceptions.UnknownAccountException;
 
-public class Bank {
+public class Bank implements IBank{
 
 	private Account estore;
 	private Account anne, bob;
@@ -22,6 +22,7 @@ public class Bank {
 		bob.setAmount(100);
 	}
 
+	@Override
 	public void transfert(String from, String to, double amount)
 			throws InsufficientBalanceException, UnknownAccountException {
 		Account Afrom = null, Ato = null;
