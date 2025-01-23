@@ -26,3 +26,8 @@ hs_err_pid*
 # Eclipse
 .classpath
 .project
+
+# Idea
+.idea
+
+m2-estore-pojo-fitiaetles3moustiquaires.iml
